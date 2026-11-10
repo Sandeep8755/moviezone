@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#090909">
+<title>MOVIEZONE | Movies & Series</title>
+<style>
+:root{--bg:#090909;--panel:#171717;--red:#e50914;--text:#f7f7f7;--muted:#aaa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#090909f5;border-bottom:1px solid #303030}.nav{max-width:1180px;margin:auto;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-size:27px;font-weight:900;letter-spacing:1px;color:var(--red)}.logo span{color:white}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:#eee;text-decoration:none;font-size:14px}
+.hero{min-height:370px;display:flex;align-items:center;background:linear-gradient(90deg,#080808 4%,#080808e8 55%,#08080866),linear-gradient(0deg,#090909,transparent 60%),url("https://images.unsplash.com/photo-1489599849927-2ee91?auto=format&fit=crop&w=1600&q=80") center/cover}
+.hero-inner{max-width:1180px;width:100%;margin:auto;padding:60px 5%}.eyebrow{color:#ff5962;font-size:13px;font-weight:bold;letter-spacing:3px;text-transform:uppercase}
+h1{font-size:clamp(40px,7vw,70px);line-height:1.05;margin:14px 0}.hero p{max-width:560px;color:#ddd;line-height:1.6}.btn{display:inline-block;background:var(--red);color:white;border:0;border-radius:6px;padding:12px 18px;font-weight:bold;text-decoration:none;cursor:pointer}
+main{max-width:1180px;margin:auto;padding:28px 5% 60px}.toolbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between}.search{flex:1;min-width:220px;max-width:440px;background:#1b1b1b;border:1px solid #383838;color:white;padding:14px;border-radius:7px;font-size:15px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}.filter{background:#222;color:#eee;border:1px solid #393939;border-radius:22px;padding:9px 14px;cursor:pointer}.filter.active,.filter:hover{background:var(--red);border-color:var(--red)}
+.section-head,.admin-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:32px 0 16px}.section-head h2,.admin-head h2{margin:0 0 5px}.muted{color:var(--muted);font-size:13px;margin:0}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:17px}.card{background:var(--panel);border:1px solid #292929;border-radius:9px;overflow:hidden}.poster{height:230px;background:#252525 center/cover;display:flex;align-items:center;justify-content:center;color:#999;font-size:13px}
+.info{padding:13px}.info h3{font-size:15px;margin:0 0 7px;overflow-wrap:anywhere}.meta{color:var(--muted);font-size:12px;margin-bottom:12px}.watch{display:inline-block;background:#333;color:#fff;text-decoration:none;padding:8px 10px;border-radius:5px;font-size:12px}.watch:hover{background:var(--red)}
+.empty{grid-column:1/-1;background:var(--panel);color:var(--muted);text-align:center;padding:25px;border-radius:8px}
+.admin-panel{background:#141414;border:1px solid #3a2525;border-top:3px solid var(--red);border-radius:9px;padding:20px;margin:15px 0 28px}.admin-panel[hidden]{display:none}.admin-panel h2{margin:0 0 8px}.hint{color:var(--muted);font-size:13px;line-height:1.5}
+.form{display:grid;gap:12px;margin:18px 0}.form label{display:grid;gap:7px;font-size:13px;color:#ddd}.form input,.form select{width:100%;background:#090909;border:1px solid #444;color:white;border-radius:5px;padding:12px;font:inherit}.form input[type=file]{font-size:13px;padding:10px}#posterPreview{min-height:18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.secondary{background:#333;color:#fff;border:0;border-radius:5px;padding:10px 13px;cursor:pointer}.danger{background:#76252a}
+.message{font-size:13px;color:#ff9da2;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}.admin-list{display:grid;gap:8px}.admin-entry{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px;background:#202020;border-radius:6px}.admin-entry strong{font-size:13px}.admin-entry small{display:block;color:var(--muted);margin-top:5px}.entry-actions{display:flex;gap:6px}
+footer{border-top:1px solid #303030;color:#888;text-align:center;padding:25px;font-size:13px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.poster{height:205px}}
+@media(max-width:600px){.nav{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.poster{height:185px}.hero{min-height:320px}nav{gap:14px}.two{grid-template-columns:1fr}.admin-head{align-items:flex-start;flex-direction:column}.admin-entry{align-items:flex-start;flex-direction:column}}
+</style></head>
+<body>
+<header><div class="nav"><div class="logo">MOVIE<span>ZONE</span></div><nav><a href="#home">Home</a><a href="#movies">Movies</a><a href="#categories">Categories</a><a href="#about">About</a></nav></div></header>
+<section class="hero" id="home"><div class="hero-inner"><div class="eyebrow">Welcome to Moviezone</div><h1>YOUR MOVIE<br>DESTINATION.</h1><p>Discover movies, explore trailers and find official places to watch. Your entertainment hub, designed for every screen.</p><a class="btn" href="#movies">Explore Movies</a></div></section>
+<main id="movies">
+<div class="toolbar"><input class="search" id="search" type="search" placeholder="Search movies..." aria-label="Search movies"><div class="filters" id="categories"><button class="filter active" data-category="All">All</button><button class="filter" data-category="Bollywood">Bollywood</button><button class="filter" data-category="Hollywood">Hollywood</button><button class="filter" data-category="South Indian">South Indian</button><button class="filter" data-category="Hindi Dubbed">Hindi Dubbed</button><button class="filter" data-category="Web Series">Web Series</button></div></div>
+<div class="section-head"><div><h2>Featured Movies</h2><p class="muted">Browse movies and official or licensed watch pages.</p></div><span class="muted" id="movieCount"></span></div>
+<div class="grid" id="movieGrid"><div class="empty">Loading movies…</div></div>
+<div class="admin-head"><div><h2>Admin</h2><p class="muted">Manage Moviezone listings</p></div><button class="btn" id="adminToggle" type="button">⚙ Admin Login</button></div>
+<section class="admin-panel" id="adminPanel" hidden>
+<div id="authArea"><h2>Admin Sign in</h2><p class="hint">Sign in with your Supabase admin account. Only the user ID added to <code>public.admins</code> can manage listings.</p>
+<form class="form" id="loginForm"><label>Email<input id="loginEmail" type="email" autocomplete="username" required placeholder="Admin email"></label><label>Password<input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Admin password"></label><div class="actions"><button class="btn" type="submit">Sign in</button></div><div class="message" id="loginMessage" aria-live="polite"></div></form></div>
+<div id="editorArea" hidden><h2>Movie Manager</h2><p class="hint" id="signedInAs"></p>
+<form class="form" id="movieForm"><input type="hidden" id="editId"><label>Movie / series name<input id="movieTitle" maxlength="120" required placeholder="Movie name"></label>
+<div class="two"><label>Year<input id="movieYear" type="number" min="1900" max="2100" value="2026"></label><label>Category<select id="movieCategory"><option>Bollywood</option><option>Hollywood</option><option>South Indian</option><option>Hindi Dubbed</option><option>Web Series</option></select></label></div>
+<div class="two"><label>Rating (optional)<input id="movieRating" maxlength="20" placeholder="e.g. 8.2/10"></label><label>Poster image URL (optional)<input id="moviePoster" type="url" placeholder="https://..."></label></div>
+<label>Or upload poster from your phone<input id="posterFile" type="file" accept="image/jpeg,image/png,image/webp,image/gif"><span class="hint">JPG, PNG, WEBP or GIF · maximum 5 MB</span></label>
+<div id="posterPreview" class="hint" aria-live="polite"></div>
+<label>Official / licensed watch page URL<input id="movieUrl" type="url" required placeholder="https://..."></label>
+<div class="actions"><button class="btn" type="submit" id="saveMovie">Add Movie</button><button class="secondary" type="button" id="cancelEdit" hidden>Cancel edit</button><button class="secondary" type="button" id="logout">Sign out</button></div><div class="message" id="formMessage" aria-live="polite"></div></form>
+<h3>Your movie entries</h3><div class="admin-list" id="adminList"></div></div></section>
+<p class="hint" id="about">Moviezone does not host movie files. Add only posters and viewing links you are authorized to use; buttons open official or licensed viewing pages.</p>
+</main><footer>© <span id="year"></span> MOVIEZONE</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(() => {
+"use strict";
+const SUPABASE_URL="https://xrzdwgwmhrjvfnxoyajx.supabase.co";
+const KEY="sb_publishable_UtN0L6gqzzsg18CZw8qEVQ_DP07uTdf";
+const $=id=>document.getElementById(id), grid=$("movieGrid");
+let db,movies=[],category="All";
+const node=(tag,cls,text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
+function httpUrl(value,optional=false){if(!value&&optional)return "";try{const u=new window.URL(value);return ["http:","https:"].includes(u.protocol)?u.href:null;}catch{return null;}}
+function render(){
+ const q=$("search").value.trim().toLowerCase();
+ const rows=movies.filter(m=>(category==="All"||m.category===category)&&(`${m.title||""} ${m.category||""}`.toLowerCase().includes(q)));
+ grid.replaceChildren();$("movieCount").textContent=`${rows.length} movie${rows.length===1?"":"s"}`;
+ if(!rows.length){grid.append(node("div","empty","No movies found yet. Please check back later."));return;}
+ rows.forEach(m=>{const card=node("article","card"),poster=node("div","poster","MOVIEZONE"),img=httpUrl(m.poster_url||"",true);
+ if(img){poster.textContent="";poster.style.backgroundImage=`url("${img.replaceAll('"',"%22")}")`;}
+ const info=node("div","info"),title=node("h3","",m.title||"Untitled"),meta=node("div","meta",[m.year,m.category,m.rating].filter(Boolean).join(" · "));
+ const a=node("a","watch","Official watch page ↗");a.href=httpUrl(m.watch_url)||"#";a.target="_blank";a.rel="noopener noreferrer";info.append(title,meta,a);card.append(poster,info);grid.append(card);});
+}
+function resetForm(){$("movieForm").reset();$("editId").value="";$("movieYear").value="2026";$("saveMovie").textContent="Add Movie";$("cancelEdit").hidden=true;$("posterPreview").textContent="";}
+async function loadMovies(){
+ const {data,error}=await db.from("movies").select("id,title,year,category,rating,poster_url,watch_url,created_at").order("created_at",{ascending:false});
+ if(error){grid.replaceChildren(node("div","empty","Could not load movies. Check the Supabase connection and public SELECT policy."));console.error(error);return;}
+ movies=data||[];render();if(!$("editorArea").hidden)renderAdmin();
+}
+function renderAdmin(){
+ const list=$("adminList");list.replaceChildren();if(!movies.length){list.append(node("p","hint","No movies added yet."));return;}
+ movies.forEach(m=>{const row=node("div","admin-entry"),details=node("div"),name=node("strong","",m.title),meta=node("small","",`${m.year||""} · ${m.category||""}`),actions=node("div","entry-actions");details.append(name,meta);
+ const edit=node("button","secondary","Edit");edit.type="button";edit.onclick=()=>{$("editId").value=m.id;$("movieTitle").value=m.title;$("movieYear").value=m.year||"";$("movieCategory").value=m.category;$("movieRating").value=m.rating||"";$("moviePoster").value=m.poster_url||"";$("movieUrl").value=m.watch_url;$("saveMovie").textContent="Save changes";$("cancelEdit").hidden=false;$("adminPanel").scrollIntoView({behavior:"smooth"});};
+ const del=node("button","secondary danger","Delete");del.type="button";del.onclick=async()=>{if(!confirm(`Delete "${m.title}"?`))return;$("formMessage").textContent="Deleting…";const {error}=await db.from("movies").delete().eq("id",m.id);if(error){$("formMessage").textContent=error.message;return;}await loadMovies();$("formMessage").textContent="Movie deleted.";};
+ actions.append(edit,del);row.append(details,actions);list.append(row);});
+}
+async function authUI(){const {data:{session}}=await db.auth.getSession();$("authArea").hidden=!!session;$("editorArea").hidden=!session;if(session){$("signedInAs").textContent=`Signed in as ${session.user.email}. Database policies verify admin permission.`;await loadMovies();renderAdmin();}}
+$("adminToggle").onclick=()=>{const p=$("adminPanel");p.hidden=!p.hidden;if(!p.hidden)p.scrollIntoView({behavior:"smooth"});};
+$("loginForm").onsubmit=async e=>{e.preventDefault();$("loginMessage").textContent="Signing in…";const {error}=await db.auth.signInWithPassword({email:$("loginEmail").value.trim(),password:$("loginPassword").value});if(error){$("loginMessage").textContent=error.message;return;}$("loginMessage").textContent="";await authUI();};
+$("logout").onclick=async()=>{const {error}=await db.auth.signOut();if(error)$("formMessage").textContent=error.message;else{resetForm();await authUI();}};
+$("posterFile").onchange=()=>{const f=$("posterFile").files?.[0];if(!f){$("posterPreview").textContent="";return;}if(!f.type.startsWith("image/")){ $("posterFile").value="";$("posterPreview").textContent="Please choose an image file.";return;}if(f.size>5*1024*1024){$("posterFile").value="";$("posterPreview").textContent="Image must be 5 MB or smaller.";return;}$("posterPreview").textContent=`Selected: ${f.name} (${(f.size/1024/1024).toFixed(1)} MB)`;};
+$("movieForm").onsubmit=async e=>{e.preventDefault();$("saveMovie").disabled=true;$("formMessage").textContent="Saving…";try{const title=$("movieTitle").value.trim(),watch=httpUrl($("movieUrl").value),manualPoster=httpUrl($("moviePoster").value.trim(),true),file=$("posterFile").files?.[0];if(!title||!watch||manualPoster===null){$("formMessage").textContent="Enter a title and valid http/https URLs.";return;}if(file&&(!file.type.startsWith("image/")||file.size>5*1024*1024)){$("formMessage").textContent="Choose an image up to 5 MB.";return;}
+ let posterUrl=manualPoster||"";if(file){$("formMessage").textContent="Uploading poster…";const {data:{user}}=await db.auth.getUser();if(!user)throw new Error("Please sign in again before uploading.");const safeName=file.name.toLowerCase().replace(/[^a-z0-9._-]/g,"-");const path=`${user.id}/${Date.now()}-${safeName}`;const {error:uploadError}=await db.storage.from("movie-posters").upload(path,file,{contentType:file.type,upsert:false});if(uploadError)throw uploadError;posterUrl=db.storage.from("movie-posters").getPublicUrl(path).data.publicUrl;}
+ const row={title,year:$("movieYear").value?Number($("movieYear").value):null,category:$("movieCategory").value,rating:$("movieRating").value.trim()||null,poster_url:posterUrl||null,watch_url:watch},id=$("editId").value;$("formMessage").textContent="Saving movie…";const result=id?await db.from("movies").update(row).eq("id",id):await db.from("movies").insert(row);if(result.error)throw result.error;resetForm();await loadMovies();renderAdmin();$("formMessage").textContent="Movie and poster saved successfully.";}catch(err){$("formMessage").textContent=err.message||"Could not save the movie.";}finally{$("saveMovie").disabled=false;}};
+$("cancelEdit").onclick=resetForm;$("search").oninput=render;
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelector(".filter.active")?.classList.remove("active");b.classList.add("active");category=b.dataset.category;render();});
+$("year").textContent=new Date().getFullYear();
+if(!window.supabase){grid.replaceChildren(node("div","empty","Supabase client did not load. Check your internet connection and refresh."));return;}
+db=window.supabase.createClient(SUPABASE_URL,KEY);db.auth.onAuthStateChange(()=>{setTimeout(authUI,0);});loadMovies();authUI();
+})();
+</script></body></html>
